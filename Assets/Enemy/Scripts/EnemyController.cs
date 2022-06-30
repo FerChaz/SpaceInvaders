@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -13,9 +13,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int enemiesPerRow;
     [SerializeField] private int rowAmmount;
 
-
-    private bool movingRight = true;
-    private bool movingLeft = false;
     public bool coroutineActive = false;
 
     private GameObject[,] enemies;

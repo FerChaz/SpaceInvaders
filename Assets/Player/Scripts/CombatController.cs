@@ -30,6 +30,7 @@ public class CombatController : MonoBehaviour
         if (playerState.lives > 0)
         {
             playerController.Respawn();
+            playerState.MinusOneLife();
         } else {
             //Gameover
             playerState.GameOver();

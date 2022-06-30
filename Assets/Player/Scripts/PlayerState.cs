@@ -42,7 +42,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-    public void minusOneLife ()
+    public void MinusOneLife ()
     {
         _lives --;
         livesIMG[_lives].SetActive(false);
