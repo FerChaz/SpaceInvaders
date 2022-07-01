@@ -136,7 +136,8 @@ public class EnemyController : MonoBehaviour
 // Si no han muerto todas las naves, analiza los lugares vecinos (norte, sur, este y oeste) de la nave que esta muriendo en busca de mas naves.
 // Si encuentra una nave viva, compara el color. Si es el mismo, mata a la nave encontrada. (Se vuelve a llamar a esta funcion recursivamente por cada 
 // nave que se va sumando a la cadena) 
-    public void CheckSides(Color color, int i, int j)
+
+    public bool CheckIFLastEnemyAliveDied()
     {
         enemiesKilled++;
 
@@ -147,9 +148,14 @@ public class EnemyController : MonoBehaviour
             Restart();
             GameStatusUpdate();
             coroutineActive = false;
-            return;
+            return true;
         }
-        
+
+        return false;
+    }
+
+    public void CheckSides(Color color, int i, int j)
+    {   
             int iUp = i - 1;
             int iDown = i + 1;
             int jRight = j + 1;
