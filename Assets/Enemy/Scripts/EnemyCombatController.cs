@@ -21,6 +21,7 @@ public class EnemyCombatController : MonoBehaviour
     private Color thisColor;
     private EnemyController parentEnemyController;
     private Transform _transform;
+    private Animator _animator;
 
     
 
@@ -29,6 +30,7 @@ public class EnemyCombatController : MonoBehaviour
         thisColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
         parentEnemyController = gameObject.GetComponentInParent<EnemyController>();
         _transform = gameObject.transform;
+        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -73,6 +75,7 @@ public class EnemyCombatController : MonoBehaviour
         {
             Destroy(other.gameObject);
             lives--;
+            ChangeSpriteOnLiveLoss();
             if (lives <= 0)
             {
                 gameObject.GetComponentInParent<EnemyController>().Play("enemyExplosion");
@@ -91,5 +94,21 @@ public class EnemyCombatController : MonoBehaviour
     {
         yield return new WaitForSeconds(shootingCooldown);
         shootingInCooldown = false;
+    }
+
+
+    public void ChangeSpriteOnLiveLoss()
+    {
+        if(thisColor == Color.blue || thisColor == Color.green) return;
+
+        if(thisColor == Color.red)
+        {
+            _animator.SetBool("isDestroyed",true);
+        }
+
+        if(thisColor == Color.yellow)
+        {
+            _animator.SetBool("isDestroyed",true);
+        }
     }
 }
