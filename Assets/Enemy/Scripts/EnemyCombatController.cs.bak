@@ -61,8 +61,7 @@ public class EnemyCombatController : MonoBehaviour
     public void Death()
     {
         isDeath = true;
-        if (parentEnemyController.CheckIFLastEnemyAliveDied()) return;
-        parentEnemyController.CheckSides(thisColor, i, j);
+        gameObject.GetComponentInParent<EnemyController>().CheckSides(thisColor, i, j);
         Destroy(gameObject);
     }
 //-----------------------------------------------------------------------------------------------------------------

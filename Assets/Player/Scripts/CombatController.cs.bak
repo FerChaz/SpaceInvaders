@@ -71,7 +71,6 @@ public class CombatController : MonoBehaviour
 
         if (other.CompareTag("EnemyCollide"))
         {
-            playerController.Play("playerExplosion");
             LoseLife();
             other.gameObject.transform.position = new Vector3(5f, 5f);
             return;
